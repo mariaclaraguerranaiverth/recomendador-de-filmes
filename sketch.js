@@ -1,22 +1,22 @@
-let campoIdade;
-let campoComedia;
-let campoAcao;
+let campoPreco;
+let campoCaro;
+let campoBarato;
 
 function setup() {
   createCanvas(800, 400);
-  createElement("h2", "Recomendador de filmes");
-  createSpan("Sua idade:");
-  campoIdade = createInput("12");
-  campoComedia= createCheckbox("Gosta de Comedia?");
-  campoAcao = createCheckbox("Gosta de acao?");
+  createElement("h2", "Recomendador de maquiagem");
+  createSpan("Preco:");
+  campoPreco = createInput("5");
+  campoCaro = createCheckbox("Prefere Caro?");
+  campoBarato= createCheckbox("Prefere Barato?");
 }
 
 function draw() {
-  background("white");
-  let idade = campoIdade.value();
-  let gostaDeComedia = campoComedia.checked();
-  let gostaDeAcao = campoAcao.checked();
-  let recomendacao = geraRecomendacao(idade, gostaDeComedia, gostaDeAcao);
+  background("rgb(219,142,212)");
+  let preco = campoPreco.value();
+  let prefereCaro = campoCaro.checked();
+  let prefereBarato = campoBarato.checked();
+  let recomendacao = geraRecomendacao(preco, prefereCaro, prefereBarato);
 
   fill(color(76, 0, 115));
   textAlign(CENTER, CENTER);
@@ -24,30 +24,31 @@ function draw() {
   text(recomendacao, width / 2, height / 2);
 }
 
-function geraRecomendacao(idade, gostaDeComedia, gostaDeAcao) {
-  if (idade >= 14) {
-    if (idade >= 16) {
-      return " Gente Grande ";
+function geraRecomendacao(preco, prefereCaro, prefereBarato) {
+  if (preco >= 200) {
+    if (preco >= 400) {
+      return "Dior";
     } else {
-      if (idade >= 12) {
-        if(gostaDeComedia || gostaDeAcao ) {
-          return "O menino do pijama listrado";          
+      if (preco>= 300) {
+        if(prefereCaro || prefereBarato) {
+          return "Nars";          
         } else{
-         return "Ta rindo do que? ";
+         return "Franciny Ehlke";
         }
       } else {
-        if (gostaDeComedia) {
-          return "As aventuras de pi";
+        if (prefereCaro) {
+          return "Rare Beauty";
         } else {
-          return "Meu malvado favorito ";
+          return "Mac";
         }
       }
     }
-  } else {
-    if (gostaDeAcao ) {
-      return " Divertidamente ";
+ } else {
+    if (prefereBarato) {
+      return "Nina Secrets";
     } else {
-      return " Juntos e Misturados ";
+      return "Mari Maria Makeup";
     }
   }
 }
+
